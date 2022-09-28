@@ -28,7 +28,7 @@ Expectation.an = Expectation.a
 ---@return Expectation
 ---
 ---```lua
----expect(intMap["fourteen"]).to.be.ok()
+---expect(false).to.never.be.ok()
 ---```
 function Expectation.ok() end
 
@@ -37,7 +37,7 @@ function Expectation.ok() end
 ---@return Expectation
 ---
 ---```lua
----expect(container.value).to.equal(3)
+---expect(1e3).to.equal(1000)
 ---```
 function Expectation.equal(otherValue) end
 
@@ -59,9 +59,42 @@ function Expectation.near(otherValue, limit) end
 ---@return Expectation
 ---
 ---```lua
+---local function fail()
+---  error("{subtype}: oh no")
+---end
 ---
+---expect(fail).to.throw("{subtype}")
+---expect(fail).to.throw("oh no")
 ---```
 function Expectation.throw(messageSubstring) end
+
+---@alias Matcher fun(value: any, ...: any): { pass: boolean, message: string? }
+
+---Allow extra assertion types to be added to an expectation
+---@param self Expectation
+---@param matchers { [string]: Matcher }
+---
+---```lua
+---local haveMatchers = {}
+---
+---function haveMatchers.have(value, key)
+---  assert(type(value) == "table", "Expectation must be a table to use 'have'")
+---
+---  local pass = value[key] ~= nil
+---  local message = pass
+---    and string.format("expected value to never have %q", tostring(key))
+---    or string.format("expected value to have %q", tostring(key))
+---
+---  return { pass = pass, message = message }
+---end
+---
+---local object = { aKey = "a value" }
+---local expectObject = expect(object):extend(haveMatchers)
+---
+---expectObject.to.have("aKey")
+---expectObject.to.never.have("aFake")
+---```
+function Expectation:extend(matchers) end
 
 ---Create a new expectation
 ---@param value any
