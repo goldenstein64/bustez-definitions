@@ -1,4 +1,4 @@
-local Expectation = require("spec.Expectation")
+local Expectation = require("Expectation")
 
 function expect(...)
 	return Expectation.new(...)
