@@ -15,48 +15,52 @@ Expectation.never = Expectation
 
 ---Assert that the expectation value is the given type.
 ---@param typeName type
----@return Expectation
+---@param message? string
+---@return Expectation self
 ---
 ---```lua
 ---expect(5).to.be.a("number")
 ---```
-function Expectation.a(typeName) end
+function Expectation.a(typeName, message) end
 
 Expectation.an = Expectation.a
 
 ---Assert that our expectation value is truthy
----@return Expectation
+---@param message? string
+---@return Expectation self
 ---
 ---```lua
 ---expect(false).to.never.be.ok()
 ---```
-function Expectation.ok() end
+function Expectation.ok(message) end
 
 ---Assert that our expectation value is equal to another value
 ---@param otherValue any
----@return Expectation
+---@param message? string
+---@return Expectation self
 ---
 ---```lua
 ---expect(1e3).to.equal(1000)
 ---```
-function Expectation.equal(otherValue) end
+function Expectation.equal(otherValue, message) end
 
 ---Assert that our expectation value is equal to another value within some
 ---inclusive limit.
 ---@param otherValue number
 ---@param limit? number -- (default `0.0000001`)
----@return Expectation
+---@param message? string
+---@return Expectation self
 ---
 ---```lua
 ---expect(3.999).to.be.near(4, 0.01)
 ---```
-function Expectation.near(otherValue, limit) end
+function Expectation.near(otherValue, limit, message) end
 
 ---Assert that our functoid expectation value throws an error when called.
 ---An optional error message can be passed to assert that the error message
 ---contains the given value.
----@param messageSubstring string
----@return Expectation
+---@param messageSubstring? string
+---@return Expectation self
 ---
 ---```lua
 ---local function fail()
@@ -68,35 +72,21 @@ function Expectation.near(otherValue, limit) end
 ---```
 function Expectation.throw(messageSubstring) end
 
----@alias Matcher fun(value: any, ...: any): { pass: boolean, message: string? }
-
----Allow extra assertion types to be added to an expectation
----@param self Expectation
----@param matchers { [string]: Matcher }
+---Assert that our expectation value "looks like" another value
+---This is the same as equality for all values except tables, which are 
+---compared key-wise and value-wise.
+---@param otherValue any
+---@return Expectation self
 ---
 ---```lua
----local haveMatchers = {}
----
----function haveMatchers.have(value, key)
----  assert(type(value) == "table", "Expectation must be a table to use 'have'")
----
----  local pass = value[key] ~= nil
----  local message = pass
----    and string.format("expected value to never have %q", tostring(key))
----    or string.format("expected value to have %q", tostring(key))
----
----  return { pass = pass, message = message }
----end
----
----local object = { aKey = "a value" }
----local expectObject = expect(object):extend(haveMatchers)
----
----expectObject.to.have("aKey")
----expectObject.to.never.have("aFake")
+---local value = { 1, 2, 3 }
+---expect(value).to.be.like({ 1, 2, 3 })
 ---```
-function Expectation:extend(matchers) end
+function Expectation.like(otherValue) end
 
----Create a new expectation
+---Returns an Expectation, which behaves like `assert`
 ---@param value any
 ---@return Expectation
-function expect(value) end
+local function expect(value) end
+
+return expect
