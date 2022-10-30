@@ -1,6 +1,6 @@
 ---@meta
 
----@class Expectation
+---@class bustez.Expectation
 local Expectation = {}
 
 Expectation.to = Expectation
@@ -16,7 +16,7 @@ Expectation.never = Expectation
 ---Assert that the expectation value is the given type.
 ---@param typeName type
 ---@param message? string
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---expect(5).to.be.a("number")
@@ -27,7 +27,7 @@ Expectation.an = Expectation.a
 
 ---Assert that our expectation value is truthy
 ---@param message? string
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---expect(false).to.never.be.ok()
@@ -37,7 +37,7 @@ function Expectation.ok(message) end
 ---Assert that our expectation value is equal to another value
 ---@param otherValue any
 ---@param message? string
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---expect(1e3).to.equal(1000)
@@ -49,7 +49,7 @@ function Expectation.equal(otherValue, message) end
 ---@param otherValue number
 ---@param limit? number -- (default `0.0000001`)
 ---@param message? string
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---expect(3.999).to.be.near(4, 0.01)
@@ -60,7 +60,7 @@ function Expectation.near(otherValue, limit, message) end
 ---An optional error message can be passed to assert that the error message
 ---contains the given value.
 ---@param messageSubstring? string
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---local function fail()
@@ -76,7 +76,7 @@ function Expectation.throw(messageSubstring) end
 ---This is the same as equality for all values except tables, which are 
 ---compared key-wise and value-wise.
 ---@param otherValue any
----@return Expectation self
+---@return bustez.Expectation self
 ---
 ---```lua
 ---local value = { 1, 2, 3 }
@@ -86,7 +86,7 @@ function Expectation.like(otherValue) end
 
 ---Returns an Expectation, which behaves like `assert`
 ---@param value any
----@return Expectation
+---@return bustez.Expectation
 local function expect(value) end
 
 return expect

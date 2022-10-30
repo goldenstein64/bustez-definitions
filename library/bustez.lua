@@ -1,17 +1,17 @@
 ---@meta
 
 ---Returns an Expectation, which behaves like `assert`
----@alias expect fun(value: any): Expectation
+---@alias bustez.expect fun(value: any): bustez.Expectation
 
 local expect = require("bustez.expect")
 local register = require("bustez.register")
 
 ---The BustEZ module
 ---@class bustez
----@overload fun(): expect
+---@overload fun(): bustez.expect
 local bustez = {}
 
----@type expect
+---@type bustez.expect
 bustez.expect = expect
 bustez.register = register
 
