@@ -1,10 +1,11 @@
-# expect_env
+# BustEZ Definitions
 
-A type lib written for [Sumneko's Lua LSP](https://github.com/sumneko/lua-language-server) and [TestEZ's](https://github.com/Roblox/testez) `expect()` assertion library, meant to be used with [busted](https://github.com/lunarmodules/busted) to achieve a TestEZ-ish environment.
+A type lib written for [sumneko/lua-language-server](https://github.com/sumneko/lua-language-server) in conjunction with [goldenstein64/bustez](https://github.com/goldenstein64/bustez).
 
 ## Usage
 
 ```jsonc
+// .vscode/settings.json
 {
 	"Lua.workspace.library": [
 		// path to wherever this repo was cloned to
