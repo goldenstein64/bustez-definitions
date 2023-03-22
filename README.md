@@ -1,6 +1,6 @@
 # BustEZ Definitions
 
-A type lib written for [sumneko/lua-language-server](https://github.com/sumneko/lua-language-server) in conjunction with [goldenstein64/bustez](https://github.com/goldenstein64/bustez).
+A type lib written for [LuaLS/lua-language-server](https://github.com/LuaLS/lua-language-server) in conjunction with [goldenstein64/bustez](https://github.com/goldenstein64/bustez).
 
 ## Usage
 
