@@ -1,6 +1,6 @@
 ---@meta
 
----@class bustez.Expectation
+---@class bustez.Expectation : luassert.internal
 local Expectation = {}
 
 Expectation.to = Expectation
@@ -10,10 +10,10 @@ Expectation.have = Expectation
 Expectation.was = Expectation
 Expectation.at = Expectation
 
----Inverts the condition expressed by the expectation
+---inverts the condition expressed by the expectation
 Expectation.never = Expectation
 
----Assert that the expectation value is the given type.
+---assert that our expectation value is the given type.
 ---@param typeName type
 ---@param message? string
 ---@return bustez.Expectation self
@@ -25,7 +25,7 @@ function Expectation.a(typeName, message) end
 
 Expectation.an = Expectation.a
 
----Assert that our expectation value is truthy
+---assert that our expectation value is truthy
 ---@param message? string
 ---@return bustez.Expectation self
 ---
@@ -34,7 +34,7 @@ Expectation.an = Expectation.a
 ---```
 function Expectation.ok(message) end
 
----Assert that our expectation value is equal to another value
+---assert that our expectation value is equal to another value
 ---@param otherValue any
 ---@param message? string
 ---@return bustez.Expectation self
@@ -44,8 +44,8 @@ function Expectation.ok(message) end
 ---```
 function Expectation.equal(otherValue, message) end
 
----Assert that our expectation value is equal to another value within some
----inclusive limit.
+---assert that our expectation value is equal to another value within some
+---inclusive limit
 ---@param otherValue number
 ---@param limit? number -- (default `0.0000001`)
 ---@param message? string
@@ -56,7 +56,8 @@ function Expectation.equal(otherValue, message) end
 ---```
 function Expectation.near(otherValue, limit, message) end
 
----Assert that our functoid expectation value throws an error when called.
+---assert that our functoid expectation value throws an error when called
+---
 ---An optional error message can be passed to assert that the error message
 ---contains the given value.
 ---@param messageSubstring? string
@@ -72,7 +73,8 @@ function Expectation.near(otherValue, limit, message) end
 ---```
 function Expectation.throw(messageSubstring) end
 
----Assert that our expectation value "looks like" another value
+---assert that our expectation value "looks like" another value
+---
 ---This is the same as equality for all values except tables, which are 
 ---compared key-wise and value-wise.
 ---@param otherValue any
