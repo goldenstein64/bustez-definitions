@@ -87,8 +87,17 @@ function Expectation.throw(messageSubstring) end
 function Expectation.like(otherValue) end
 
 ---Returns an Expectation, which behaves like `assert`
----@param value any
----@return bustez.Expectation
-local function expect(value) end
+---@operator call(any): bustez.Expectation
+local expect = {}
+
+---@class bustez.Matcher.Result
+---@field pass boolean
+---@field message string
+
+---@alias bustez.Matcher fun(...: any): bustez.Matcher.Result
+
+---takes a table of matchers and extends `expect` to support it.
+---@param matchers { [string]: bustez.Matcher }
+function expect:extend(matchers) end
 
 return expect
