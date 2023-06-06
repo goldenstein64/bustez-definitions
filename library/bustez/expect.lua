@@ -75,7 +75,7 @@ function Expectation.throw(messageSubstring) end
 
 ---assert that our expectation value "looks like" another value
 ---
----This is the same as equality for all values except tables, which are 
+---This is the same as equality for all values except tables, which are
 ---compared key-wise and value-wise.
 ---@param otherValue any
 ---@return bustez.Expectation self
@@ -87,6 +87,7 @@ function Expectation.throw(messageSubstring) end
 function Expectation.like(otherValue) end
 
 ---Returns an Expectation, which behaves like `assert`
+---@class bustez.expect
 ---@operator call(any): bustez.Expectation
 local expect = {}
 
