@@ -1,6 +1,6 @@
 ---@meta
 
----@class bustez.Expectation : luassert.internal
+---@class bustez.Expectation
 local Expectation = {}
 
 Expectation.to = Expectation
