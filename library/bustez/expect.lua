@@ -87,7 +87,22 @@ function Expectation.throw(messageSubstring) end
 ---expect(value).to.look.like({ 1, 2, 3 })
 ---```
 function Expectation.like(otherValue, message) end
+---assert that our string expectation value matches the given pattern
+---@param pattern string
+---@param init? number -- where to start searching
+---@param plain? boolean -- should the pattern be treated as plain text?
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect("test string").to.match("^test")
+---expect("test string").to.match("string$")
+---expect("test string").to.never.match("foo")
+---expect("test string").to.match("%w")
 ---```
+---@overload fun(pattern: string, init?: number, message?: string, plain?: boolean): (self: bustez.Expectation)
+---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
+function Expectation.match(pattern, init, plain, message) end
 ---assigns a spy to the expectation
 ---@param aspy luassert.spy | luassert.stub
 ---@param message? string
