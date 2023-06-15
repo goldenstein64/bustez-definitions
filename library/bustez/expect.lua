@@ -49,6 +49,9 @@ function Expectation.message(message) end
 function Expectation.a(type, message) end
 
 Expectation.an = Expectation.a
+Expectation.to_be_a = Expectation.a
+Expectation.to_be_an = Expectation.a
+
 ---assert that our expectation value is a number
 ---@param message? string
 ---@return bustez.Expectation self
@@ -57,6 +60,9 @@ Expectation.an = Expectation.a
 ---expect(5).to.be.a.number()
 ---```
 function Expectation.number(message) end
+
+Expectation.to_be_a_number = Expectation.number
+Expectation.a_number = Expectation.number
 
 ---assert that our expectation value is a boolean
 ---@param message? string
@@ -67,6 +73,9 @@ function Expectation.number(message) end
 ---```
 function Expectation.boolean(message) end
 
+Expectation.to_be_a_boolean = Expectation.boolean
+Expectation.a_boolean = Expectation.boolean
+
 ---assert that our expectation is a string
 ---@param message? string
 ---@return bustez.Expectation self
@@ -75,6 +84,9 @@ function Expectation.boolean(message) end
 ---expect("foo").to.be.a.string()
 ---```
 function Expectation.string(message) end
+
+Expectation.to_be_a_string = Expectation.string
+Expectation.a_string = Expectation.string
 
 ---assert that our expectation is a thread
 ---@param message? string
@@ -85,6 +97,9 @@ function Expectation.string(message) end
 ---```
 function Expectation.thread(message) end
 
+Expectation.a_thread = Expectation.thread
+Expectation.to_be_a_thread = Expectation.thread
+
 ---assert that our expectation is a table
 ---@param message? string
 ---@return bustez.Expectation self
@@ -93,6 +108,9 @@ function Expectation.thread(message) end
 ---expect({}).to.be.a.table()
 ---```
 function Expectation.table(message) end
+
+Expectation.to_be_a_table = Expectation.table
+Expectation.a_table = Expectation.table
 
 ---assert that our expectation is a userdata
 ---@param message? string
@@ -103,6 +121,9 @@ function Expectation.table(message) end
 ---```
 function Expectation.userdata(message) end
 
+Expectation.to_be_a_userdata = Expectation.userdata
+Expectation.a_userdata = Expectation.userdata
+
 ---assert that our expectation is a function
 ---@param message? string
 ---@return bustez.Expectation self
@@ -111,6 +132,9 @@ function Expectation.userdata(message) end
 ---expect(function() end).to.be.a._function()
 ---```
 function Expectation._function(message) end
+
+Expectation.to_be_a_function = Expectation._function
+Expectation.a_function = Expectation._function
 
 ---assert that our expectation is precisely `nil`
 ---@param message? string
@@ -121,6 +145,9 @@ function Expectation._function(message) end
 ---```
 function Expectation._nil(message) end
 
+Expectation.to_be_nil = Expectation._nil
+Expectation.be_nil = Expectation._nil
+
 ---assert that our expectation is precisely `true`
 ---@param message? string
 ---@return bustez.Expectation self
@@ -129,6 +156,9 @@ function Expectation._nil(message) end
 ---expect(true).to.be._true()
 ---```
 function Expectation._true(message) end
+
+Expectation.to_be_true = Expectation._true
+Expectation.be_true = Expectation._true
 
 ---assert that our expectation is precisely `false`
 ---@param message? string
@@ -139,6 +169,8 @@ function Expectation._true(message) end
 ---```
 function Expectation._false(message) end
 
+Expectation.to_be_false = Expectation._false
+Expectation.be_false = Expectation._false
 
 ---assert that our expectation value is truthy
 ---@param message? string
@@ -148,6 +180,10 @@ function Expectation._false(message) end
 ---expect(false).to.never.be.ok()
 ---```
 function Expectation.ok(message) end
+
+Expectation.truthy = Expectation.ok
+Expectation.to_be_ok = Expectation.ok
+Expectation.to_be_truthy = Expectation.ok
 
 ---assert that our expectation is falsy, i.e. `false` or `nil`
 ---@param message? string
@@ -159,6 +195,8 @@ function Expectation.ok(message) end
 ---```
 function Expectation.falsy(message) end
 
+Expectation.to_be_falsy = Expectation.falsy
+
 ---assert that our expectation value is equal to another value
 ---@param otherValue any
 ---@param message? string
@@ -168,6 +206,9 @@ function Expectation.falsy(message) end
 ---expect(1e3).to.equal(1000)
 ---```
 function Expectation.equal(otherValue, message) end
+
+Expectation.equals = Expectation.equal
+Expectation.to_equal = Expectation.equal
 
 ---assert that our expectation value is equal to another value within some
 ---inclusive limit
@@ -180,6 +221,8 @@ function Expectation.equal(otherValue, message) end
 ---expect(3.999).to.be.near(4, 0.01)
 ---```
 function Expectation.near(otherValue, limit, message) end
+
+Expectation.to_be_near = Expectation.near
 
 ---assert that our functoid expectation value throws an error when called
 ---
@@ -197,6 +240,11 @@ function Expectation.near(otherValue, limit, message) end
 ---expect(fail).to.never.throw("o")
 ---```
 function Expectation.throw(message) end
+
+Expectation.error = Expectation.throw
+Expectation.errors = Expectation.throw
+Expectation.to_throw = Expectation.throw
+Expectation.to_error = Expectation.throw
 
 ---assert that our functoid expectation value throws an error that matches the
 ---given pattern
@@ -219,6 +267,17 @@ function Expectation.throw(message) end
 ---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
 function Expectation.match_error(pattern, init, plain, message) end
 
+Expectation.matches_error = Expectation.match_error
+Expectation.error_match = Expectation.match_error
+Expectation.error_matches = Expectation.match_error
+Expectation.to_match_error = Expectation.match_error
+Expectation.matches = { error = Expectation.match_error }
+Expectation.match = { error = Expectation.match_error }
+Expectation.error = {
+  match = Expectation.match_error,
+  matches = Expectation.match_error,
+}
+
 ---assert that our expectation value "looks like" another value
 ---
 ---This is the same as equality for all values except tables, which are
@@ -233,6 +292,14 @@ function Expectation.match_error(pattern, init, plain, message) end
 ---expect(value).to.look.like({ 1, 2, 3 })
 ---```
 function Expectation.like(otherValue, message) end
+
+Expectation.look_like = Expectation.like
+Expectation.looks_like = Expectation.like
+Expectation.to_be_like = Expectation.like
+Expectation.to_look_like = Expectation.like
+Expectation.look = { like = Expectation.like }
+
+Expectation.same = Expectation.like
 
 ---assert that our string expectation value matches the given pattern
 ---@param pattern string
@@ -251,6 +318,9 @@ function Expectation.like(otherValue, message) end
 ---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
 function Expectation.match(pattern, init, plain, message) end
 
+Expectation.matches = Expectation.match
+Expectation.to_match = Expectation.match
+
 ---assert that our table expectation value has no duplicate elements
 ---@param deep? boolean -- uses deep comparison on `true`, `==` otherwise
 ---@param message? string
@@ -264,6 +334,8 @@ function Expectation.match(pattern, init, plain, message) end
 ---```
 ---@overload fun(message?: string, deep?: boolean): (self: bustez.Expectation)
 function Expectation.unique(deep, message) end
+
+Expectation.to_be_unique = Expectation.unique
 
 ---assigns an array to the expectation.
 ---
@@ -285,6 +357,8 @@ function Expectation.array(arr) end
 ---expect.array({ 1, 2, nil, 4 }).to.have.holes()
 ---```
 function Expectation.holes(length) end
+
+Expectation.to_have_holes = Expectation.holes
 
 ---assigns a spy to the expectation
 ---@param aspy luassert.spy | luassert.stub
