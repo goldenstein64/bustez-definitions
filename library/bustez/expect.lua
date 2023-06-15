@@ -13,6 +13,17 @@ Expectation.at = Expectation
 ---inverts the condition expressed by the expectation
 Expectation.never = Expectation
 
+---add a message to this assertion
+---@param message string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(function()
+---  expect(false).message("cool message").to.be.ok()
+---end).to.match_error("cool message")
+---```
+function Expectation.message(message) end
+
 ---assert that our expectation value is the given type
 ---@param type type
 ---@param message? string
