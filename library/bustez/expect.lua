@@ -3,6 +3,8 @@
 ---@class bustez.Expectation
 local Expectation = {}
 
+-- TestEZ modifiers
+
 Expectation.to = Expectation
 Expectation.be = Expectation
 Expectation.been = Expectation
@@ -12,6 +14,18 @@ Expectation.at = Expectation
 
 ---inverts the condition expressed by the expectation
 Expectation.never = Expectation
+
+-- luassert modifiers
+
+Expectation.is = Expectation
+Expectation.are = Expectation
+Expectation.has = Expectation
+Expectation.does = Expectation
+
+Expectation.no = Expectation.never
+Expectation.to_not = Expectation.never
+Expectation.not_to = Expectation.never
+Expectation._not = Expectation.never
 
 ---add a message to this assertion
 ---@param message string
