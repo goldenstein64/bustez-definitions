@@ -85,6 +85,107 @@ function Expectation.throw(messageSubstring) end
 ---expect(value).to.be.like({ 1, 2, 3 })
 ---```
 function Expectation.like(otherValue) end
+---assigns a spy to the expectation
+---@param aspy luassert.spy | luassert.stub
+---@param message? string
+---@return bustez.Expectation self
+function Expectation.spy(aspy, message) end
+
+---assigns a stub to the expectation
+---@param astub luassert.spy | luassert.stub
+---@param message? string
+---@return bustez.Expectation self
+function Expectation.stub(astub, message) end
+
+---asserts that our expectation value, a spy or stub, returned the given values
+---@param ... any
+---@return bustez.Expectation self
+---
+---```lua
+---local funSpy = spy.new(function() return 1, 2, 3 end)
+---funSpy()
+---
+---expect.spy(funSpy).to.have.returned.with(1, 2, 3)
+---```
+function Expectation.returned_with(...) end
+
+Expectation.to_have_returned_with = Expectation.returned_with
+Expectation.returned = { with = Expectation.returned_with }
+
+---asserts that our expectation value, a spy or stub, was called with the given
+---arguments
+---@param ... any
+---@return bustez.Expectation self
+---
+---```lua
+---local funSpy = spy.new(function() end)
+---funSpy(2, 3, 5)
+---
+---expect.spy(funSpy).to.be.called.with(2, 3, 5)
+---```
+function Expectation.called_with(...) end
+
+Expectation.to_be_called_with = Expectation.called_with
+
+---asserts that our expectation value, a spy or stub, was called the given
+---number of times
+---@param times number
+---@return bustez.Expectation self
+---
+---```lua
+---local funSpy = spy.new(function() end)
+---funSpy()
+---funSpy()
+---funSpy()
+---
+---expect.spy(funSpy).to.be.called(3)
+---```
+function Expectation.called(times) end
+
+---asserts that our expectation value, a spy or stub, was called at least the
+---given number of times
+---@param times number
+---@return bustez.Expectation self
+---
+---```lua
+---local funSpy = spy.new(function() end)
+---funSpy()
+---funSpy()
+---funSpy()
+---
+---expect.spy(funSpy).to.be.called.at.least(1)
+---```
+function Expectation.called_at_least(times) end
+
+Expectation.to_be_called_at_least = Expectation.called_at_least
+
+---asserts that our expectation value, a spy or stub, was called at most the
+---given number of times
+---@param times number
+---@return bustez.Expectation self
+---
+---```lua
+---local funSpy = spy.new(function() end)
+---funSpy()
+---funSpy()
+---funSpy()
+---
+---expect.spy(funSpy).to.be.called.at.most(5)
+---```
+function Expectation.called_at_most(times) end
+
+Expectation.to_be_called_at_most = Expectation.called_at_most
+
+Expectation.called = {
+  with = Expectation.called_with,
+  at = {
+    least = Expectation.called_at_least,
+    most = Expectation.called_at_most,
+  },
+  at_most = Expectation.called_at_most,
+  at_least = Expectation.called_at_least,
+}
+Expectation.to_be_called = Expectation.called
 
 ---a callable that returns an Expectation, which behaves like `assert`
 ---@class bustez.expect : bustez.Expectation
