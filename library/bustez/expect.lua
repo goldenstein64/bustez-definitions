@@ -34,6 +34,16 @@ Expectation.an = Expectation.a
 ---```
 function Expectation.ok(message) end
 
+---assert that our expectation is falsy, i.e. `false` or `nil`
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(false).to.be.falsy()
+---expect(nil).to.be.falsy()
+---```
+function Expectation.falsy(message) end
+
 ---assert that our expectation value is equal to another value
 ---@param otherValue any
 ---@param message? string
