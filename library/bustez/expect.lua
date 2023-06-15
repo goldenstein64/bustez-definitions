@@ -86,8 +86,8 @@ function Expectation.throw(messageSubstring) end
 ---```
 function Expectation.like(otherValue) end
 
----Returns an Expectation, which behaves like `assert`
----@class bustez.expect
+---a callable that returns an Expectation, which behaves like `assert`
+---@class bustez.expect : bustez.Expectation
 ---@operator call(any): bustez.Expectation
 local expect = {}
 
