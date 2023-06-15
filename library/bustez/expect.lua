@@ -172,7 +172,7 @@ function Expectation.equal(otherValue, message) end
 ---assert that our expectation value is equal to another value within some
 ---inclusive limit
 ---@param otherValue number
----@param limit? number -- (default `0.0000001`)
+---@param limit? number -- defaults to `0.0000001`
 ---@param message? string
 ---@return bustez.Expectation self
 ---
