@@ -498,4 +498,24 @@ local expect = {}
 ---```
 function expect.extend(matchers) end
 
+---changes the order of arguments for an assertion when passed through `expect`
+---@param assertion_name string
+---@param map integer[] -- an array of argument positions
+---
+---```lua
+---say:set("assertion.matchx.positive", "Expected string to match.\nPattern:\n%s\nPassed in:\n%s")
+---say:set("assertion.matchx.positive", "Did not expect string to match.\nPattern:\n%s\nPassed in:\n%s")
+---
+---local function matchx(state, arguments, level)
+---  return string.find(unpack(arguments)) ~= nil
+---end
+---
+---expect.extend({ matchx = matchx })
+---expect.map_args("matchx", { 2, 1 })
+---
+---assert.does_matchx("^%s+$", "\t\n   \n\t")
+---expect("\t\n   \n\t").to.matchx("^%s+$")
+---```
+function expect.map_args(assertion_name, map) end
+
 return expect
