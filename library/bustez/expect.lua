@@ -59,19 +59,19 @@ function Expectation.near(otherValue, limit, message) end
 ---assert that our functoid expectation value throws an error when called
 ---
 ---An optional error message can be passed to assert that the error message
----contains the given value.
----@param messageSubstring? string
+---is the given value.
+---@param message? string
 ---@return bustez.Expectation self
 ---
 ---```lua
 ---local function fail()
----  error("{subtype}: oh no")
+---  error("oh no")
 ---end
 ---
----expect(fail).to.throw("{subtype}")
 ---expect(fail).to.throw("oh no")
+---expect(fail).to.never.throw("o")
 ---```
-function Expectation.throw(messageSubstring) end
+function Expectation.throw(message) end
 
 ---assert that our functoid expectation value throws an error that matches the
 ---given pattern
