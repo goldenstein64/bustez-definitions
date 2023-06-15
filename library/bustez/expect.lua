@@ -116,6 +116,28 @@ function Expectation.match(pattern, init, plain, message) end
 ---```
 ---@overload fun(message?: string, deep?: boolean): (self: bustez.Expectation)
 function Expectation.unique(deep, message) end
+
+---assigns an array to the expectation.
+---
+---@see bustez.Expectation.holes
+---@param arr any[]
+---@return bustez.Expectation self
+function Expectation.array(arr) end
+
+---assert that our array expectation value contains a `nil` element.
+---
+---The optional `length` argument forces `expect()` to interpret the array as 
+---having the given length.
+---@param length? number
+---@return bustez.Expectation self
+---
+---```lua
+---expect.array({ 1, 2, 3 }).to.have.no.holes()
+---expect.array({ 1, 2, 3 }).to.have.holes(4)
+---expect.array({ 1, 2, nil, 4 }).to.have.holes()
+---```
+function Expectation.holes(length) end
+
 ---assigns a spy to the expectation
 ---@param aspy luassert.spy | luassert.stub
 ---@param message? string
