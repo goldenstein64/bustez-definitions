@@ -49,6 +49,96 @@ function Expectation.message(message) end
 function Expectation.a(type, message) end
 
 Expectation.an = Expectation.a
+---assert that our expectation value is a number
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(5).to.be.a.number()
+---```
+function Expectation.number(message) end
+
+---assert that our expectation value is a boolean
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(true).to.be.a.boolean()
+---```
+function Expectation.boolean(message) end
+
+---assert that our expectation is a string
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect("foo").to.be.a.string()
+---```
+function Expectation.string(message) end
+
+---assert that our expectation is a thread
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(coroutine.create(function() end)).to.be.a.thread()
+---```
+function Expectation.thread(message) end
+
+---assert that our expectation is a table
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect({}).to.be.a.table()
+---```
+function Expectation.table(message) end
+
+---assert that our expectation is a userdata
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(io.open("...")).to.be.a.userdata()
+---```
+function Expectation.userdata(message) end
+
+---assert that our expectation is a function
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(function() end).to.be.a._function()
+---```
+function Expectation._function(message) end
+
+---assert that our expectation is precisely `nil`
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(nil).to.be._nil()
+---```
+function Expectation._nil(message) end
+
+---assert that our expectation is precisely `true`
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(true).to.be._true()
+---```
+function Expectation._true(message) end
+
+---assert that our expectation is precisely `false`
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(false).to.be._false()
+---```
+function Expectation._false(message) end
+
 
 ---assert that our expectation value is truthy
 ---@param message? string
