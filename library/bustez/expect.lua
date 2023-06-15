@@ -13,15 +13,15 @@ Expectation.at = Expectation
 ---inverts the condition expressed by the expectation
 Expectation.never = Expectation
 
----assert that our expectation value is the given type.
----@param typeName type
+---assert that our expectation value is the given type
+---@param type type
 ---@param message? string
 ---@return bustez.Expectation self
 ---
 ---```lua
 ---expect(5).to.be.a("number")
 ---```
-function Expectation.a(typeName, message) end
+function Expectation.a(type, message) end
 
 Expectation.an = Expectation.a
 
