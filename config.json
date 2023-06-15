@@ -5,10 +5,5 @@
 	],
 	"files": [
 		".*%.spec%.lua$"
-	],
-	"settings": {
-		"Lua.workspace.library": [
-			"$USERPROFILE/Documents/LuaEnvironments/bustez/library"
-		]
-	}
+	]
 }
