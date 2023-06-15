@@ -103,6 +103,19 @@ function Expectation.like(otherValue, message) end
 ---@overload fun(pattern: string, init?: number, message?: string, plain?: boolean): (self: bustez.Expectation)
 ---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
 function Expectation.match(pattern, init, plain, message) end
+---assert that our table expectation value has no duplicate elements
+---@param deep? boolean -- uses deep comparison on `true`, `==` otherwise
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect({ 1, 2, 3 }).to.be.unique()
+---expect({ a = 1, b = 2, c = 3 }).to.be.unique()
+---expect({ { "a" }, { "a" } }).to.never.be.unique(true)
+---expect({ { "a" }, { "a" } }).to.be.unique(false)
+---```
+---@overload fun(message?: string, deep?: boolean): (self: bustez.Expectation)
+function Expectation.unique(deep, message) end
 ---assigns a spy to the expectation
 ---@param aspy luassert.spy | luassert.stub
 ---@param message? string
