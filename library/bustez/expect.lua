@@ -87,6 +87,7 @@ function Expectation.throw(messageSubstring) end
 ---expect(value).to.look.like({ 1, 2, 3 })
 ---```
 function Expectation.like(otherValue, message) end
+
 ---assert that our string expectation value matches the given pattern
 ---@param pattern string
 ---@param init? number -- where to start searching
@@ -103,6 +104,7 @@ function Expectation.like(otherValue, message) end
 ---@overload fun(pattern: string, init?: number, message?: string, plain?: boolean): (self: bustez.Expectation)
 ---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
 function Expectation.match(pattern, init, plain, message) end
+
 ---assert that our table expectation value has no duplicate elements
 ---@param deep? boolean -- uses deep comparison on `true`, `==` otherwise
 ---@param message? string
