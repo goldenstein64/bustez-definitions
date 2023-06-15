@@ -95,10 +95,27 @@ local expect = {}
 ---@field pass boolean
 ---@field message string
 
----@alias bustez.Matcher fun(...: any): bustez.Matcher.Result
+---@alias bustez.Matcher fun(state: table, arguments: any[], level: integer): boolean
 
----takes a table of matchers and extends `expect` to support it.
+---takes a table of matchers and extends `expect` and `luassert` to support it
 ---@param matchers { [string]: bustez.Matcher }
-function expect:extend(matchers) end
+---
+---```lua
+---say:set("assertion.exist.positive", "Expected %s \nto exist")
+---say:set("assertion.exist.negative", "Expected %s \nto not exist")
+---
+------@class bustez.Expectation
+------asserts that our expectation is not `nil`
+------@field exist fun(): bustez.Expectation
+---
+---expect.extend({
+---  exist = function(state, arguments, level)
+---    return arguments[1] ~= nil
+---  end,
+---})
+---
+---expect(false).to.exist()
+---```
+function expect.extend(matchers) end
 
 return expect
