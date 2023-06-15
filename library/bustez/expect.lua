@@ -73,6 +73,27 @@ function Expectation.near(otherValue, limit, message) end
 ---```
 function Expectation.throw(messageSubstring) end
 
+---assert that our functoid expectation value throws an error that matches the
+---given pattern
+---@param pattern string
+---@param init? number -- where to start searching
+---@param plain? boolean -- should the pattern be treated as plain text?
+---@param message? string
+---@return bustez.Expectation
+---
+---```lua
+---local function fail()
+---  error("{failure}: oh no")
+---end
+---
+---expect(fail).to.match.error("oh no")
+---expect(fail).to.match.error("{failure}")
+---expect(fail).to.match.error("%a+")
+---```
+---@overload fun(pattern: string, init?: number, message?: string, plain?: boolean): (self: bustez.Expectation)
+---@overload fun(pattern: string, message?: string, init?: number, plain?: boolean): (self: bustez.Expectation)
+function Expectation.match_error(pattern, init, plain, message) end
+
 ---assert that our expectation value "looks like" another value
 ---
 ---This is the same as equality for all values except tables, which are
