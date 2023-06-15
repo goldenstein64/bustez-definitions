@@ -473,7 +473,11 @@ local expect = {}
 
 ---@alias bustez.Matcher fun(state: table, arguments: any[], level: integer): boolean
 
----takes a table of matchers and extends `expect` and `luassert` to support it
+---takes a table of matchers and extends `expect` and `luassert` to support it.
+---
+---`expect` will pass its expectation value (argument to `expect(...)`) as the 
+---first argument to the assertion; this can be changed with 
+---`expect.map_args()`.
 ---@param matchers { [string]: bustez.Matcher }
 ---
 ---```lua
