@@ -78,13 +78,16 @@ function Expectation.throw(messageSubstring) end
 ---This is the same as equality for all values except tables, which are
 ---compared key-wise and value-wise.
 ---@param otherValue any
+---@param message? string
 ---@return bustez.Expectation self
 ---
 ---```lua
 ---local value = { 1, 2, 3 }
 ---expect(value).to.be.like({ 1, 2, 3 })
+---expect(value).to.look.like({ 1, 2, 3 })
 ---```
-function Expectation.like(otherValue) end
+function Expectation.like(otherValue, message) end
+---```
 ---assigns a spy to the expectation
 ---@param aspy luassert.spy | luassert.stub
 ---@param message? string
