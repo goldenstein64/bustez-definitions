@@ -11,6 +11,8 @@ Expectation.been = Expectation
 Expectation.have = Expectation
 Expectation.was = Expectation
 Expectation.at = Expectation
+Expectation.a = Expectation
+Expectation.an = Expectation
 
 ---inverts the condition expressed by the expectation
 Expectation.never = Expectation
