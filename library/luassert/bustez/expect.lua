@@ -174,18 +174,31 @@ function Expectation._false(message) end
 Expectation.to_be_false = Expectation._false
 Expectation.be_false = Expectation._false
 
+---assert that our expectation value is non-nil
+---@param message? string
+---@return bustez.Expectation self
+---
+---```lua
+---expect(true).to.be.ok()
+---expect(false).to.be.ok()
+---expect(nil).to.never.be.ok()
+---```
+function Expectation.ok(message) end
+
+Expectation.to_be_ok = Expectation.ok
+
 ---assert that our expectation value is truthy
 ---@param message? string
 ---@return bustez.Expectation self
 ---
 ---```lua
----expect(false).to.never.be.ok()
+---expect(true).to.be.truthy()
+---expect(false).to.never.be.truthy()
+---expect(nil).to.never.be.truthy()
 ---```
-function Expectation.ok(message) end
+function Expectation.truthy(message) end
 
-Expectation.truthy = Expectation.ok
-Expectation.to_be_ok = Expectation.ok
-Expectation.to_be_truthy = Expectation.ok
+Expectation.to_be_truthy = Expectation.truthy
 
 ---assert that our expectation is falsy, i.e. `false` or `nil`
 ---@param message? string
@@ -348,7 +361,7 @@ function Expectation.array(arr) end
 
 ---assert that our array expectation value contains a `nil` element.
 ---
----The optional `length` argument forces `expect()` to interpret the array as 
+---The optional `length` argument forces `expect()` to interpret the array as
 ---having the given length.
 ---@param length? number
 ---@return bustez.Expectation self
