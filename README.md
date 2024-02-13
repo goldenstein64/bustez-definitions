@@ -15,7 +15,7 @@ A type lib written for [LuaLS/lua-language-server](https://github.com/LuaLS/lua-
 }
 ```
 
-For a more detailed description of how to install a library of definition files, see the LSP's [wiki](https://github.com/sumneko/lua-language-server/wiki/Libraries).
+For a more detailed description of how to install a library of definition files, see the LSP's [wiki](https://luals.github.io/wiki/definition-files/).
 
 ## Types
 
